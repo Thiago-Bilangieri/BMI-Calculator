@@ -1,38 +1,31 @@
 import 'dart:math';
 
+import 'package:bmi_calculator/change_notifier/bmi_change_notifier_controller.dart';
 import 'package:bmi_calculator/widgets/bmi_gauge.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class BmiValueNotifier extends StatefulWidget {
-  const BmiValueNotifier({Key? key}) : super(key: key);
+class BmiChangeNotifierPage extends StatefulWidget {
+  const BmiChangeNotifierPage({Key? key}) : super(key: key);
 
   @override
-  State<BmiValueNotifier> createState() => _BmiValueNotifierState();
+  State<BmiChangeNotifierPage> createState() => _BmiChangeNotifierPageState();
 }
 
-class _BmiValueNotifierState extends State<BmiValueNotifier> {
+class _BmiChangeNotifierPageState extends State<BmiChangeNotifierPage> {
   final formKey = GlobalKey<FormState>();
   final weightEC = TextEditingController();
   final heightEC = TextEditingController();
-  var bmi = ValueNotifier(0.0);
 
-  void bmiCalc({required double weight, required double height}) async {
-    setState(() {
-      bmi.value = 0.0;
-    });
-    await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      bmi.value = weight / pow(height, 2);
-    });
-  }
+  final controller = BmiChangeNotifierController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: const Text('Change Notifier'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
           child: Form(
@@ -41,10 +34,11 @@ class _BmiValueNotifierState extends State<BmiValueNotifier> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              ValueListenableBuilder<double>(
-                valueListenable: bmi,
-                builder: (_, bmi, __) => BmiGauge(bmi: bmi),
-              ),
+              AnimatedBuilder(
+                  animation: controller,
+                  builder: (context, chield) {
+                    return BmiGauge(bmi: controller.bmi);
+                  }),
               const SizedBox(
                 height: 20,
               ),
@@ -94,10 +88,10 @@ class _BmiValueNotifierState extends State<BmiValueNotifier> {
                     );
                     double weight = format.parse(weightEC.text) as double;
                     double height = format.parse(heightEC.text) as double;
-                    bmiCalc(weight: weight, height: height);
+                    controller.calc(weight: weight, height: height);
                   }
                 },
-                child: Text("BMI Calculatae"),
+                child: const Text("BMI Calculate"),
               )
             ],
           ),

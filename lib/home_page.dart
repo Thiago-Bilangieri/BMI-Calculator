@@ -1,5 +1,6 @@
+import 'package:bmi_calculator/change_notifier/bmi_change_notifier_page.dart';
 import 'package:bmi_calculator/setState/bmi_setstate_page.dart';
-import 'package:bmi_calculator/value_notifier/bmi_value_notifier.dart';
+import 'package:bmi_calculator/value_notifier/bmi_value_notifier_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,11 +27,12 @@ class HomePage extends StatelessWidget {
               child: const Text("SetState"),
             ),
             ElevatedButton(
-              onPressed: () => _goToPage(context, const BmiValueNotifier()),
+              onPressed: () => _goToPage(context, const BmiValueNotifierPage()),
               child: const Text("ValueNotifier"),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () =>
+                  _goToPage(context, const BmiChangeNotifierPage()),
               child: const Text("Change Notifier"),
             ),
             ElevatedButton(

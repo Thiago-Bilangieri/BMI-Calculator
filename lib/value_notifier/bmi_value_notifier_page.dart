@@ -5,26 +5,26 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class BmiSetstatePage extends StatefulWidget {
-  const BmiSetstatePage({Key? key}) : super(key: key);
+class BmiValueNotifierPage extends StatefulWidget {
+  const BmiValueNotifierPage({Key? key}) : super(key: key);
 
   @override
-  State<BmiSetstatePage> createState() => _BmiSetstatePageState();
+  State<BmiValueNotifierPage> createState() => _BmiValueNotifierStatePage();
 }
 
-class _BmiSetstatePageState extends State<BmiSetstatePage> {
+class _BmiValueNotifierStatePage extends State<BmiValueNotifierPage> {
   final formKey = GlobalKey<FormState>();
   final weightEC = TextEditingController();
   final heightEC = TextEditingController();
-  var bmi = 0.0;
+  var bmi = ValueNotifier(0.0);
 
   void bmiCalc({required double weight, required double height}) async {
     setState(() {
-      bmi = 0.0;
+      bmi.value = 0.0;
     });
     await Future.delayed(const Duration(seconds: 1));
     setState(() {
-      bmi = weight / pow(height, 2);
+      bmi.value = weight / pow(height, 2);
     });
   }
 
@@ -32,7 +32,7 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SetState'),
+        title: const Text('Value Notifier'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -42,7 +42,10 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              BmiGauge(bmi: bmi),
+              ValueListenableBuilder<double>(
+                valueListenable: bmi,
+                builder: (_, bmi, __) => BmiGauge(bmi: bmi),
+              ),
               const SizedBox(
                 height: 20,
               ),
