@@ -1,6 +1,8 @@
+import 'package:bmi_calculator/bmi_bloc_pattern/bmi_bloc_pattern_page.dart';
 import 'package:bmi_calculator/change_notifier/bmi_change_notifier_page.dart';
 import 'package:bmi_calculator/setState/bmi_setstate_page.dart';
 import 'package:bmi_calculator/value_notifier/bmi_value_notifier_page.dart';
+import 'package:bmi_calculator/widgets/home_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,28 +18,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomePage'),
+        title: const Text('BMI Calculator'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
+            HomeButton(
               onPressed: () => _goToPage(context, const BmiSetstatePage()),
-              child: const Text("SetState"),
+              widget: const Text("SetState"),
             ),
-            ElevatedButton(
+            HomeButton(
               onPressed: () => _goToPage(context, const BmiValueNotifierPage()),
-              child: const Text("ValueNotifier"),
+              widget: const Text("ValueNotifier"),
             ),
-            ElevatedButton(
+            HomeButton(
               onPressed: () =>
                   _goToPage(context, const BmiChangeNotifierPage()),
-              child: const Text("Change Notifier"),
+              widget: const Text("Change Notifier"),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Bloc Pattern (Streams)"),
+            HomeButton(
+              onPressed: () => _goToPage(context, const BmiBlocPatternPage()),
+              widget: const Text("Bloc Pattern (Streams)"),
             ),
           ],
         ),

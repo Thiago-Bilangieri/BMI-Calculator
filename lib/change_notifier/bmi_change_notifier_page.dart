@@ -19,6 +19,13 @@ class _BmiChangeNotifierPageState extends State<BmiChangeNotifierPage> {
   final heightEC = TextEditingController();
 
   final controller = BmiChangeNotifierController();
+  @override
+  void dispose() {
+    weightEC.dispose();
+    heightEC.dispose();
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +65,7 @@ class _BmiChangeNotifierPageState extends State<BmiChangeNotifierPage> {
                   if (value == null || value.isEmpty) {
                     return "Weight is required";
                   }
+                  return null;
                 },
               ),
               TextFormField(
@@ -76,6 +84,7 @@ class _BmiChangeNotifierPageState extends State<BmiChangeNotifierPage> {
                   if (value == null || value.isEmpty) {
                     return "Height is required";
                   }
+                  return null;
                 },
               ),
               ElevatedButton(

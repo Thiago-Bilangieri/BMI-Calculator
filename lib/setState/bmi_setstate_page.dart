@@ -18,6 +18,13 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
   final heightEC = TextEditingController();
   var bmi = 0.0;
 
+  @override
+  void dispose() {
+    weightEC.dispose();
+    heightEC.dispose();
+    super.dispose();
+  }
+
   void bmiCalc({required double weight, required double height}) async {
     setState(() {
       bmi = 0.0;
@@ -62,6 +69,7 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
                   if (value == null || value.isEmpty) {
                     return "Weight is required";
                   }
+                  return null;
                 },
               ),
               TextFormField(
@@ -80,6 +88,7 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
                   if (value == null || value.isEmpty) {
                     return "Height is required";
                   }
+                  return null;
                 },
               ),
               ElevatedButton(
@@ -95,7 +104,7 @@ class _BmiSetstatePageState extends State<BmiSetstatePage> {
                     bmiCalc(weight: weight, height: height);
                   }
                 },
-                child: Text("BMI Calculate"),
+                child: const Text("BMI Calculate"),
               )
             ],
           ),

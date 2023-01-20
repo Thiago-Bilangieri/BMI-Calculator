@@ -1,16 +1,41 @@
-# bmi_calculator
+# BMI(Body Mass Index) Calculator
 
-A new Flutter project.
+<p align="center">
+<a href="https://flutter.dev" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/></a><a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" width="40" height="40"/></a>
 
-## Getting Started
+Project in Flutter to demonstrate knowledge in native state management of Flutter.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<h3 align="center">Containing </h2>
+<p align="center">
+-> Setstate
+<p align="center">
+-> Value Notifier
+<p align="center">
+-> Change Notifier
+<p align="center">
+-> Bloc Pattern(Streams)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# Calculadora de IMC(Índice de Massa Corporal)
+
+<p align="center">
+<a href="https://flutter.dev" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/>   </a>  <a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" width="40" height="40"/></a>
+
+Projeto feito em flutter para demonstrar conhecimentos em gerencias de estado nativas do flutter.
+
+<h3 align="center">Abordando </h2>
+<p align="center">
+-> Setstate
+<p align="center">
+-> Value Notifier
+<p align="center">
+-> Change Notifier
+<p align="center">
+-> Bloc Pattern(Streams)
+<p align="center">
+
+![](/img/01.jpg)
+![](/img/02.jpg)

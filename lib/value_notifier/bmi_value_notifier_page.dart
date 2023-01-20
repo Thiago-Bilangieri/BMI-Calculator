@@ -29,6 +29,13 @@ class _BmiValueNotifierStatePage extends State<BmiValueNotifierPage> {
   }
 
   @override
+  void dispose() {
+    weightEC.dispose();
+    heightEC.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -65,6 +72,7 @@ class _BmiValueNotifierStatePage extends State<BmiValueNotifierPage> {
                   if (value == null || value.isEmpty) {
                     return "Weight is required";
                   }
+                  return null;
                 },
               ),
               TextFormField(
@@ -83,6 +91,7 @@ class _BmiValueNotifierStatePage extends State<BmiValueNotifierPage> {
                   if (value == null || value.isEmpty) {
                     return "Height is required";
                   }
+                  return null;
                 },
               ),
               ElevatedButton(
@@ -98,7 +107,7 @@ class _BmiValueNotifierStatePage extends State<BmiValueNotifierPage> {
                     bmiCalc(weight: weight, height: height);
                   }
                 },
-                child: Text("BMI Calculate"),
+                child: const Text("BMI Calculate"),
               )
             ],
           ),
